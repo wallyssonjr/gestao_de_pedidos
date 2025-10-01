@@ -11,9 +11,9 @@ Este projeto compõe de três módulos: **_gestao-de-pedidos-back_**, **_gestao-
 
 
 - Na raiz de cada projeto (**_config-server_** , **_gestao-de-pedidos-back_** e **_gestao-de-pedidos-front_**) há um **README.md** que contém a sessão **Decisões técnicas** com as explicações para cada.
-	- [README.md do backend](https://gitlab.com/gestao-pedidos/gestao-de-pedidos/-/blob/main/gestao-pedidos-back/README.md?ref_type=heads)
-	- [README.md do frontend](https://gitlab.com/gestao-pedidos/gestao-de-pedidos/-/blob/main/gestao-pedidos-front/README.md?ref_type=heads)
-	- [README.md do config-server](https://gitlab.com/gestao-pedidos/gestao-de-pedidos/-/blob/main/config-server/README.md?ref_type=heads)
+	- [README.md do backend](https://github.com/wallyssonjr/gestao_de_pedidos/-/blob/main/gestao-pedidos-back/README.md?ref_type=heads)
+	- [README.md do frontend](https://github.com/wallyssonjr/gestao_de_pedidos/-/blob/main/gestao-pedidos-front/README.md?ref_type=heads)
+	- [README.md do config-server](https://github.com/wallyssonjr/gestao_de_pedidos/gestao-de-pedidos/-/blob/main/config-server/README.md?ref_type=heads)
 
 
 - Foram configurados jobs no [GitLab](https://gitlab.com/gestao-pedidos/gestao-de-pedidos/-/pipelines) para que todo push realizado passe por esses 3 jobs afim de garantir a qualidade do desenvolvimento:
