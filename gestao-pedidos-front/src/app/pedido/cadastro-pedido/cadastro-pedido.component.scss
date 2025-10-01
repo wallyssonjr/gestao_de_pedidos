@@ -1,77 +1,101 @@
+.pedido-card {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 12px;
+  background: #ffffff;
+}
+
+.card-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #3f51b5;
+  margin-bottom: 20px;
+}
+
 .add-product-form {
   display: flex;
-  align-items: flex-start;
+  flex-wrap: wrap;
   gap: 16px;
-  margin-bottom: 24px;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 .product-input {
-  flex-grow: 1;
+  flex: 2;
+  min-width: 200px;
 }
 
 .quantity-input {
   width: 100px;
 }
 
-.items-table {
-  width: 100%;
-  margin-bottom: 24px;
+.add-btn {
+  height: 56px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.desktop-table {
+  overflow-x: auto;
+  border-radius: 8px;
+  background: #fafafa;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.items-table th, .items-table td {
+  padding: 12px 8px;
+}
+
+.mobile-list .mobile-card {
+  margin-bottom: 16px;
+  border-radius: 10px;
+  padding: 12px;
+}
+
+.mobile-card-content p {
+  margin: 4px 0;
 }
 
 .order-summary {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 16px;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  border-top: 1px solid #e0e0e0;
 }
 
 .total-amount {
-  font-size: 1.5em;
-  font-weight: bold;
-  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.checkout-btn {
+  padding: 10px 24px;
 }
 
 .empty-cart {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 40px;
-  color: #888;
-
-  mat-icon {
-    font-size: 48px;
-    width: 48px;
-    height: 48px;
-    margin-bottom: 16px;
-  }
+  text-align: center;
+  color: #757575;
+  margin-top: 30px;
 }
 
-.mobile-list {
-  display: none;
+.empty-cart mat-icon {
+  font-size: 48px;
+  color: #e0e0e0;
+  margin-bottom: 10px;
 }
 
+/* Responsividade */
 @media (max-width: 768px) {
-  .desktop-table {
-    display: none;
-  }
-  .mobile-list {
-    display: block;
-  }
-  .mobile-card {
-    margin-bottom: 16px;
-  }
-  .mobile-card-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
   .add-product-form {
     flex-direction: column;
-    align-items: stretch;
+    gap: 12px;
   }
+
   .quantity-input {
-    width: auto;
+    width: 100%;
   }
 }
-

@@ -1,11 +1,58 @@
+.relatorios-card {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 24px;
+  border-radius: 12px;
+  background: #ffffff;
+}
+
+.card-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #3f51b5;
+}
+
+.card-subtitle {
+  display: block;
+  margin-top: 4px;
+  color: #555;
+  font-weight: 500;
+}
+
 .report-form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.date-range-field {
+  width: 100%;
 }
 
 .action-buttons {
   display: flex;
-  gap: 16px;
+  gap: 12px;
   flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-top: 8px;
+}
+
+button mat-icon {
+  margin-right: 6px;
+}
+
+button[mat-raised-button]:disabled {
+  background-color: #c5cae9;
+  color: #ffffff;
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+  .action-buttons {
+    flex-direction: column;
+  }
+  button[mat-raised-button] {
+    width: 100%;
+  }
 }

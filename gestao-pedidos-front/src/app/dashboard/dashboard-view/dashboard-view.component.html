@@ -1,8 +1,8 @@
-<mat-card>
+<mat-card class="dashboard-card mat-elevation-z6">
   <mat-card-header class="dashboard-header">
-    <mat-card-title>Dashboard</mat-card-title>
+    <mat-card-title class="card-title">📊 Dashboard</mat-card-title>
     <mat-card-subtitle class="dashboard-subtitle">
-      <span>Pedidos realizados nos últimos</span>
+      Pedidos realizados nos últimos
       <mat-form-field appearance="outline" class="periodo-select">
         <mat-select [formControl]="periodoControl">
           <mat-option *ngFor="let dias of periodoOpcoes" [value]="dias">
@@ -10,13 +10,14 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <span>dias</span>
+      dias
     </mat-card-subtitle>
   </mat-card-header>
 
   <mat-card-content class="dashboard-content">
-    <mat-tab-group animationDuration="0ms">
+    <mat-tab-group animationDuration="0ms" class="dashboard-tabs">
 
+      <!-- Tab Listagem -->
       <mat-tab label="Listagem">
         <div class="tab-content">
           <div *ngIf="pedidos$ | async as pedidos;">
@@ -27,37 +28,34 @@
             </div>
 
             <mat-accordion *ngIf="pedidos.length > 0">
-              <mat-expansion-panel *ngFor="let pedido of pedidos">
+              <mat-expansion-panel *ngFor="let pedido of pedidos" class="pedido-panel mat-elevation-z2">
                 <mat-expansion-panel-header>
                   <mat-panel-title>
                     <strong>Pedido #{{ pedido.id }}</strong>
                   </mat-panel-title>
                   <mat-panel-description>
-                    <span><span
-                      class="desktop-label">Data do pedido: </span>{{ pedido.dataPedido | date:'dd/MM/yyyy HH:mm' }}</span>
-                    <span><span
-                      class="desktop-label">Total do pedido: </span>{{ pedido.precoTotal | currency:'BRL' }}</span>
+                    <span><span class="desktop-label">Data do pedido:</span> {{ pedido.dataPedido | date:'dd/MM/yyyy HH:mm' }}</span>
+                    <span><span class="desktop-label">Total:</span> {{ pedido.precoTotal | currency:'BRL' }}</span>
                   </mat-panel-description>
                 </mat-expansion-panel-header>
-                <mat-list role="list">
-                  <mat-list-item *ngFor="let item of pedido.itensDoPedido" role="listitem">
+
+                <mat-list role="list" class="pedido-list">
+                  <mat-list-item *ngFor="let item of pedido.itensDoPedido" role="listitem" class="pedido-item">
                     <span matListItemTitle>{{ item.nomeProduto }}</span>
                     <span matListItemLine>
-                      <span class="desktop-label">Quantidade: </span>
-                      <span class="mobile-label">Qtd: </span>
-                      {{ item.quantidade }} |
-                      <span class="desktop-label">Preço unit.: </span>
-                      <span class="mobile-label">R$ unit.: </span>
-                      {{ item.precoProduto | currency:'BRL' }}
+                      <span class="desktop-label">Qtd:</span>{{ item.quantidade }} |
+                      <span class="desktop-label">Preço unit.:</span>{{ item.precoProduto | currency:'BRL' }}
                     </span>
                   </mat-list-item>
                 </mat-list>
               </mat-expansion-panel>
             </mat-accordion>
+
           </div>
         </div>
       </mat-tab>
 
+      <!-- Tab Gráfico -->
       <mat-tab label="Gráfico">
         <div class="tab-content">
           <div *ngIf="pedidosAgrupadosProduto$ | async as chartData;">
@@ -67,15 +65,15 @@
               <span>Nenhum pedido encontrado no período selecionado.</span>
             </div>
 
-            <div *ngIf="chartData.length > 0" class="chart-container">
+            <div *ngIf="chartData.length > 0" class="chart-container mat-elevation-z2">
               <ngx-charts-advanced-pie-chart
                 [results]="chartData"
                 [animations]="false"
                 [percentageFormatting]="formatarPorcentagem"
                 [valueFormatting]="formatarValor">
               </ngx-charts-advanced-pie-chart>
-
             </div>
+
           </div>
         </div>
       </mat-tab>

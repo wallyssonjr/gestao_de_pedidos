@@ -1,10 +1,12 @@
-<mat-card>
+<mat-card class="produto-card mat-elevation-z6">
   <mat-card-header>
-    <mat-card-title>{{ isEdicao ? 'Editar produto' : 'Novo produto' }}</mat-card-title>
+    <mat-card-title class="card-title">
+      {{ isEdicao ? 'Editar Produto' : 'Novo Produto' }}
+    </mat-card-title>
   </mat-card-header>
 
-  <mat-card-content style="margin-top: 10px">
-    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <mat-card-content>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="produto-form">
 
       <mat-form-field appearance="outline" class="form-field">
         <mat-label>Nome</mat-label>
@@ -24,9 +26,8 @@
 
       <mat-form-field appearance="outline" class="form-field">
         <mat-label>Preço</mat-label>
-        <input matInput type="number" formControlName="preco" required min="0.01">
         <span matTextPrefix>R$&nbsp;</span>
-
+        <input matInput type="number" formControlName="preco" required min="0.01">
         <mat-error *ngIf="form.get('preco')?.hasError('required')">
           Preço é obrigatório.
         </mat-error>

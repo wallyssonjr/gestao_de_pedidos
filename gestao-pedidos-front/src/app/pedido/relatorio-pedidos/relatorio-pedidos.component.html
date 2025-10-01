@@ -1,10 +1,15 @@
-<mat-card>
-  <mat-card-title>Relatórios de pedidos</mat-card-title>
-  <mat-card-subtitle style="margin-top: 10px">Selecione o período desejado</mat-card-subtitle>
+<mat-card class="relatorios-card mat-elevation-z6">
+  <mat-card-header>
+    <mat-card-title class="card-title">📄 Relatórios de Pedidos</mat-card-title>
+    <mat-card-subtitle class="card-subtitle">
+      Selecione o período desejado
+    </mat-card-subtitle>
+  </mat-card-header>
 
-  <mat-card-content style="margin-top: 10px">
+  <mat-card-content>
     <form [formGroup]="form" class="report-form">
-      <mat-form-field appearance="outline">
+
+      <mat-form-field appearance="outline" class="date-range-field">
         <mat-label>Intervalo de datas</mat-label>
         <mat-date-range-input [formGroup]="form" [rangePicker]="picker">
           <input matStartDate formControlName="dataInicial" placeholder="Data inicial" (keydown)="$event.preventDefault()" (click)="picker.open()">
@@ -20,11 +25,11 @@
       <div class="action-buttons">
         <button mat-raised-button color="primary" (click)="gerarRelatorio('simples')" [disabled]="form.invalid">
           <mat-icon>picture_as_pdf</mat-icon>
-          Relatório de pedidos
+          Relatório de Pedidos
         </button>
         <button mat-raised-button color="accent" (click)="gerarRelatorio('agrupado')" [disabled]="form.invalid">
           <mat-icon>picture_as_pdf</mat-icon>
-          Pedidos por produto
+          Pedidos por Produto
         </button>
       </div>
 

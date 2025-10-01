@@ -13,6 +13,13 @@ mat-sidenav-content {
   flex-direction: column;
 }
 
+.sidenav-toolbar {
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #3f51b5;
+  border-bottom: 1px solid #e0e0e0;
+}
+
 .main-content {
   flex: 1;
   padding: 20px;
