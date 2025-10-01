@@ -11,7 +11,7 @@
         <input type="text" matInput formControlName="produtoInput" [matAutocomplete]="auto">
         <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayProduto">
           <mat-option *ngFor="let produto of produtosFiltrados$ | async" [value]="produto">
-            {{ produto.nome }} (estoque: {{ produto.quantidade }})
+            {{ produto.nome }} (stock: {{ produto.quantidade }})
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
