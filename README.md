@@ -15,13 +15,6 @@ Este projeto compõe de três módulos: **_gestao-de-pedidos-back_**, **_gestao-
 	- [README.md do frontend](https://github.com/wallyssonjr/gestao_de_pedidos/tree/main/gestao-pedidos-front)
 	- [README.md do config-server](https://github.com/wallyssonjr/gestao_de_pedidos/blob/main/config-server/README.md)
 
-
-- Foram configurados jobs no [GitLab](https://gitlab.com/gestao-pedidos/gestao-de-pedidos/-/pipelines) para que todo push realizado passe por esses 3 jobs afim de garantir a qualidade do desenvolvimento:
-	- **test**: realiza todos os testes unitários e de integração para garantir que nenhum tenha sido quebrado
-	- **build**: passado com sucesso da etapa anterior, realiza o build dos projetos backend e frontend
-	- **dockerize**: cria as imagens docker de cada projeto para que possa ser levada a um job de deploy
-
-
 ## Como rodar o projeto localmente
 
 - Supondo que tenha git e Docker Compose instalados:
