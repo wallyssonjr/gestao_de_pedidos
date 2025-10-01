@@ -25,12 +25,6 @@ Projeto responsável pelas telas e usabilidade do sistema.
 
 - Utilizado scss com @media desta forma as telas são responsivas para desktop e mobile
 
-- Realizado configuração de _profiles_ a partir dos arquivos **ambiente.ts** (desenvolvimento) e **ambiente.prd.ts** (produção) afim de facilitar o desenvolvimento
-  - **ambiente.ts**: configura a URL base das APIs apontando para _localhost:8080_
-  - **ambiente.prd.ts**: configura a URL base das APIs apontando para o endereço configurado no **Render** (https://gestao-pedidos-back.onrender.com)
-    - **_OBSERVAÇÃO_**: A configuração realizada no _Render_ utiliza planos gratuítos e é possível que ao acessar o endereço acima não esteja disponível na hora, contudo o próprio _Render_ identifica a tentativa de acesso e sobe os serviços automaticamente uns minutos depois.
-
-
 ## Como rodar apenas o projeto frontend sem docker
 
 - Se quiser subir o projeto frontend de forma manual sem ser pelo docker siga os passos abaixo (se quiser rodar o projeto pelo docker leia o *README.md* da raiz da pasta */gestao-de-pedidos* ):
