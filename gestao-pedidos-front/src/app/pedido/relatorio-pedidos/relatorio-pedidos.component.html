@@ -1,0 +1,33 @@
+<mat-card>
+  <mat-card-title>Relatórios de pedidos</mat-card-title>
+  <mat-card-subtitle style="margin-top: 10px">Selecione o período desejado</mat-card-subtitle>
+
+  <mat-card-content style="margin-top: 10px">
+    <form [formGroup]="form" class="report-form">
+      <mat-form-field appearance="outline">
+        <mat-label>Intervalo de datas</mat-label>
+        <mat-date-range-input [formGroup]="form" [rangePicker]="picker">
+          <input matStartDate formControlName="dataInicial" placeholder="Data inicial" (keydown)="$event.preventDefault()" (click)="picker.open()">
+          <input matEndDate formControlName="dataFinal" placeholder="Data final" (keydown)="$event.preventDefault()" (click)="picker.open()">
+        </mat-date-range-input>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+        <mat-error *ngIf="form.invalid">
+          Ambas as datas são obrigatórias.
+        </mat-error>
+      </mat-form-field>
+
+      <div class="action-buttons">
+        <button mat-raised-button color="primary" (click)="gerarRelatorio('simples')" [disabled]="form.invalid">
+          <mat-icon>picture_as_pdf</mat-icon>
+          Relatório de pedidos
+        </button>
+        <button mat-raised-button color="accent" (click)="gerarRelatorio('agrupado')" [disabled]="form.invalid">
+          <mat-icon>picture_as_pdf</mat-icon>
+          Pedidos por produto
+        </button>
+      </div>
+
+    </form>
+  </mat-card-content>
+</mat-card>

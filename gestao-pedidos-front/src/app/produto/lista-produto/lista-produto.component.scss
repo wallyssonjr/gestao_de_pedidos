@@ -1,0 +1,31 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+.mobile-list {
+  display: none;
+}
+
+.empty-table-message {
+  padding: 20px;
+  text-align: center;
+  color: #888;
+}
+
+@media (max-width: 768px) {
+  .desktop-table {
+    display: none;
+  }
+  .mobile-list {
+    display: block;
+  }
+  .mobile-card {
+    margin-bottom: 16px;
+  }
+  .mobile-card-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 0;
+    border-bottom: 1px solid #eee;
+  }
+}

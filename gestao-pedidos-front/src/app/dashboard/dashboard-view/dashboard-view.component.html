@@ -1,0 +1,85 @@
+<mat-card>
+  <mat-card-header class="dashboard-header">
+    <mat-card-title>Dashboard</mat-card-title>
+    <mat-card-subtitle class="dashboard-subtitle">
+      <span>Pedidos realizados nos últimos</span>
+      <mat-form-field appearance="outline" class="periodo-select">
+        <mat-select [formControl]="periodoControl">
+          <mat-option *ngFor="let dias of periodoOpcoes" [value]="dias">
+            {{ dias }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <span>dias</span>
+    </mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content class="dashboard-content">
+    <mat-tab-group animationDuration="0ms">
+
+      <mat-tab label="Listagem">
+        <div class="tab-content">
+          <div *ngIf="pedidos$ | async as pedidos;">
+
+            <div *ngIf="pedidos.length === 0" class="empty-message">
+              <mat-icon>info</mat-icon>
+              <span>Nenhum pedido encontrado no período selecionado.</span>
+            </div>
+
+            <mat-accordion *ngIf="pedidos.length > 0">
+              <mat-expansion-panel *ngFor="let pedido of pedidos">
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    <strong>Pedido #{{ pedido.id }}</strong>
+                  </mat-panel-title>
+                  <mat-panel-description>
+                    <span><span
+                      class="desktop-label">Data do pedido: </span>{{ pedido.dataPedido | date:'dd/MM/yyyy HH:mm' }}</span>
+                    <span><span
+                      class="desktop-label">Total do pedido: </span>{{ pedido.precoTotal | currency:'BRL' }}</span>
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <mat-list role="list">
+                  <mat-list-item *ngFor="let item of pedido.itensDoPedido" role="listitem">
+                    <span matListItemTitle>{{ item.nomeProduto }}</span>
+                    <span matListItemLine>
+                      <span class="desktop-label">Quantidade: </span>
+                      <span class="mobile-label">Qtd: </span>
+                      {{ item.quantidade }} |
+                      <span class="desktop-label">Preço unit.: </span>
+                      <span class="mobile-label">R$ unit.: </span>
+                      {{ item.precoProduto | currency:'BRL' }}
+                    </span>
+                  </mat-list-item>
+                </mat-list>
+              </mat-expansion-panel>
+            </mat-accordion>
+          </div>
+        </div>
+      </mat-tab>
+
+      <mat-tab label="Gráfico">
+        <div class="tab-content">
+          <div *ngIf="pedidosAgrupadosProduto$ | async as chartData;">
+
+            <div *ngIf="chartData.length === 0" class="empty-message">
+              <mat-icon>info</mat-icon>
+              <span>Nenhum pedido encontrado no período selecionado.</span>
+            </div>
+
+            <div *ngIf="chartData.length > 0" class="chart-container">
+              <ngx-charts-advanced-pie-chart
+                [results]="chartData"
+                [animations]="false"
+                [percentageFormatting]="formatarPorcentagem"
+                [valueFormatting]="formatarValor">
+              </ngx-charts-advanced-pie-chart>
+
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+
+    </mat-tab-group>
+  </mat-card-content>
+</mat-card>

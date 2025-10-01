@@ -1,0 +1,81 @@
+stages:
+  - test
+  - build
+  - dockerize
+
+.maven_cache: &maven_cache
+  cache:
+    key:
+      files:
+        - gestao-pedidos-back/pom.xml
+    paths:
+      - .m2/repository
+    policy: pull-push
+
+.node_cache: &node_cache
+  cache:
+    key:
+      files:
+        - gestao-pedidos-front/package-lock.json
+      prefix: frontend
+    paths:
+      - gestao-pedidos-front/node_modules/
+    policy: pull-push
+
+# --- TESTES ---
+backend-test:
+  stage: test
+  image: maven:3.8.5-openjdk-17
+  <<: *maven_cache
+  script:
+    - mvn -B test -f gestao-pedidos-back/pom.xml
+
+# --- BUILD ---
+
+backend-build:
+  stage: build
+  image: maven:3.8.5-openjdk-17
+  <<: *maven_cache
+  script:
+    - mvn -B package -f gestao-pedidos-back/pom.xml -DskipTests
+  artifacts:
+    paths:
+      - gestao-pedidos-back/target/*.jar
+
+frontend-build:
+  stage: build
+  image: node:18
+  <<: *node_cache
+  script:
+    - cd gestao-pedidos-front
+    - npm ci
+    - npm run build -- --configuration=production
+  artifacts:
+    paths:
+      - gestao-pedidos-front/dist/
+
+# --- DOCKER ---
+
+dockerize-backend:
+  stage: dockerize
+  image: docker:20.10.16 
+  services:
+    - docker:20.10.16-dind 
+  before_script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  script:
+    - cd gestao-pedidos-back
+    - docker build -t $CI_REGISTRY_IMAGE/backend:latest .
+    - docker push $CI_REGISTRY_IMAGE/backend:latest
+
+dockerize-frontend:
+  stage: dockerize
+  image: docker:20.10.16
+  services:
+    - docker:20.10.16-dind
+  before_script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  script:
+    - cd gestao-pedidos-front
+    - docker build -t $CI_REGISTRY_IMAGE/front:latest .
+    - docker push $CI_REGISTRY_IMAGE/front:latest

@@ -1,0 +1,64 @@
+services:
+  config-server:
+    container_name: config-server
+    build:
+      context: ./config-server
+    ports:
+      - "8888:8888"
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8888/actuator/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      
+  rabbitmq:
+    container_name: gestao-pedidos-rabbitmq
+    image: rabbitmq:3.13-management 
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      
+  backend:
+    container_name: gestao-pedidos-back
+    build:
+      context: ./gestao-pedidos-back
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_RABBITMQ_HOST=rabbitmq
+      - SPRING_PROFILES_ACTIVE=${SPRING_PROFILES_ACTIVE}
+      - SPRING_CLOUD_CONFIG_URI=${CONFIG_SERVER_URI:-http://config-server:8888}
+      - LANG=pt_BR.UTF-8
+      - LANGUAGE=pt_BR:pt:en
+      - LC_ALL=pt_BR.UTF-8
+    networks:
+      - app-network
+    depends_on:
+      config-server:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+
+  frontend:
+    container_name: gestao-pedidos-front
+    build:
+      context: ./gestao-pedidos-front
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
