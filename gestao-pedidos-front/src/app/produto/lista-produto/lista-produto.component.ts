@@ -14,7 +14,7 @@ import {ProdutoStoreService} from '../produto-store.service';
 
 export class ListaProdutoComponent implements OnInit {
 
-  colunasProduto: string[] = ['id', 'nome', 'preco', 'quantidade', 'acoes'];
+  colunasProduto: string[] = ['id', 'name', 'price', 'amount', 'actions'];
   listaProdutos$: Observable<Produto[]>;
 
   constructor(
@@ -41,7 +41,7 @@ export class ListaProdutoComponent implements OnInit {
   }
 
   removerProduto(id: number | undefined): void {
-    if (id && confirm('Deseja mesmo excluir este produto?')) {
+    if (id && confirm('Are you sure you want to delete this product?')) {
 
       this.produtoStoreService.removerProduto(id).subscribe((mensagem) => {
         this.notificacaoService.msgSucesso(mensagem);

@@ -63,7 +63,7 @@ export class CadastroProdutoComponent implements OnInit {
     }
 
     acaoProduto$.subscribe(() => {
-      const mensagemSucesso = this.isEdicao ? 'Produto atualizado com sucesso!' : 'Produto criado com sucesso!';
+      const mensagemSucesso = this.isEdicao ? 'Product updated successfully!' : 'Product created successfully!';
       this.notificacaoService.msgSucesso(mensagemSucesso);
       this.router.navigate(['/produto']);
     });
