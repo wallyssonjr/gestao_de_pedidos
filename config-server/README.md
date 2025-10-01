@@ -17,7 +17,7 @@ Responsável por ler as configurações _.properties_ de acordo com o profile qu
 git init .
 ```
 ```
-git clone -b main https://gitlab.com/gestao-pedidos/gestao-de-pedidos.git
+git clone -b main git@github.com:wallyssonjr/gestao_de_pedidos.git
 ```
 ```
 cd gestao-de-pedidos\config-server
