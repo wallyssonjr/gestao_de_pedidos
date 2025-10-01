@@ -14,7 +14,7 @@ import {ProdutoStoreService} from '../produto-store.service';
 
 export class ListaProdutoComponent implements OnInit {
 
-  colunasProduto: string[] = ['id', 'name', 'price', 'amount', 'actions'];
+  colunasProduto: string[] = ['id', 'nome', 'preco', 'quantidade', 'acoes'];
   listaProdutos$: Observable<Produto[]>;
 
   constructor(
