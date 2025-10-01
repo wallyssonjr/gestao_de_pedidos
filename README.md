@@ -36,7 +36,7 @@ Este projeto compõe de três módulos: **_gestao-de-pedidos-back_**, **_gestao-
 git init .
 ```
 ```
-git clone -b main https://gitlab.com/gestao-pedidos/gestao-de-pedidos.git
+git clone -b main git@github-pessoal:wallyssonjr/gestao_de_pedidos.git
 ```
 ```
 cd gestao-de-pedidos
