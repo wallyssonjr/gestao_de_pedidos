@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.21.5.final using JasperReports Library version 6.21.5-74d586df47b25dbd05bd0957999819196e59934a  -->
+<!-- Created with Jaspersoft Studio version 6.20.5.final using JasperReports Library version 6.20.5-3efcf2e67f959db3888d79f73dde2dbd7acb4f8e  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="produtos_agrupados_report" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4eedbb89-b4f6-4469-9ab6-f642a1688cf7">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true"/>
@@ -17,16 +17,13 @@
 	<title>
 		<band height="81" splitType="Stretch">
 			<line>
-				<reportElement x="0" y="80" width="556" height="1" uuid="806ce5df-1219-4876-ae0c-ca7405b1f246">
-					<property name="local_mesure_unitheight" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="0" y="80" width="555" height="1" uuid="806ce5df-1219-4876-ae0c-ca7405b1f246"/>
 			</line>
 			<staticText>
 				<reportElement x="390" y="10" width="50" height="20" uuid="0f86baff-6386-4f3f-b3fe-2388707babe8"/>
 				<box rightPadding="4"/>
 				<textElement textAlignment="Right"/>
-				<text><![CDATA[Data:]]></text>
+				<text><![CDATA[Date:]]></text>
 			</staticText>
 			<textField pattern="dd/MM/yyyy HH:mm">
 				<reportElement x="440" y="10" width="114" height="20" uuid="bb10dbe1-0a4f-4722-9953-c163b63cf979"/>
@@ -34,29 +31,14 @@
 			</textField>
 			<image hAlign="Center">
 				<reportElement x="0" y="0" width="65" height="60" uuid="94883631-a913-43e2-b182-ab8d77d0181e"/>
-				<imageExpression><![CDATA["imagens/invoice_logo.png"]]></imageExpression>
+				<imageExpression><![CDATA[Thread.currentThread().getContextClassLoader().getResourceAsStream("imagens/invoice_logo.png")]]></imageExpression>
 			</image>
 			<staticText>
-				<reportElement x="95" y="0" width="285" height="25" uuid="e622555d-198b-4ccd-a4a1-c59c53304058">
-					<property name="local_mesure_unitheight" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="95" y="0" width="295" height="25" uuid="e622555d-198b-4ccd-a4a1-c59c53304058"/>
 				<textElement>
 					<font size="19" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Relatório de produtos]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="95" y="55" width="205" height="15" uuid="b8cc42fd-b569-497d-834d-7e854040ad18"/>
-				<text><![CDATA[Telefone, email e outrols]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="95" y="25" width="205" height="15" uuid="c226e44d-3bb5-4145-b0b3-903bf1d79fde"/>
-				<text><![CDATA[Rua 1]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="95" y="40" width="205" height="15" uuid="b96f7183-44f8-43ad-ba60-43d8fbf50b6e"/>
-				<text><![CDATA[Cidade, CEP XXXXX-XX]]></text>
+				<text><![CDATA[Products Sold Report]]></text>
 			</staticText>
 		</band>
 	</title>
@@ -64,22 +46,22 @@
 		<band height="25">
 			<staticText>
 				<reportElement style="Column header" x="0" y="0" width="250" height="20" uuid="a2a3a4a5-b6b7-c8c9-d0d1-e2e3e4e5e6e7"/>
-				<text><![CDATA[Produto]]></text>
+				<text><![CDATA[Product]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="250" y="0" width="100" height="20" uuid="c2c3c4c5-d6d7-e8e9-f0f1-a2a3a4a5a6a7"/>
 				<textElement textAlignment="Right"/>
-				<text><![CDATA[Preço Unit.]]></text>
+				<text><![CDATA[Unit Price]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="350" y="0" width="100" height="20" uuid="b2b3b4b5-c6c7-d8d9-e0e1-f2f3f4f5f6f7"/>
 				<textElement textAlignment="Center"/>
-				<text><![CDATA[Qtd. Vendida]]></text>
+				<text><![CDATA[Qty. Sold]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="450" y="0" width="105" height="20" uuid="d2d3d4d5-e6e7-f8f9-a0a1-b2b3b4b5b6b7"/>
 				<textElement textAlignment="Right"/>
-				<text><![CDATA[Valor Total]]></text>
+				<text><![CDATA[Total Value]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
@@ -114,7 +96,7 @@
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Total:]]></text>
+				<text><![CDATA[Grand total:]]></text>
 			</staticText>
 			<textField pattern="¤ #,##0.00">
 				<reportElement x="450" y="5" width="105" height="20" uuid="99887766-5544-3322-1100-ffeeddccbbaa"/>
