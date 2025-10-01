@@ -22,12 +22,6 @@ Este projeto compõe de três módulos: **_gestao-de-pedidos-back_**, **_gestao-
 	- **dockerize**: cria as imagens docker de cada projeto para que possa ser levada a um job de deploy
 
 
-- Foi configurado o **Render** para deploy automático. Ao rodar o *docker-compose up --build* localmente o ambiente vai subir o _config-server_ , _RabbitMQ_ , _back_ e _front_ com profile **_dev_** automaticamente, contudo ao realizar um *push* o **Render** iniciará automaticamente o job de implantação _config-server_ , _back_ e _front_ com profile **_prd_**
-	- O apontamento para swagger do **Render** é: https://gestao-pedidos-back.onrender.com/gestao-pedidos/api/swagger-ui/index.html
-	- O apontamento para a página do sistema pelo **Render** é: https://gestao-pedidos-front.onrender.com/
-	- **_OBSERVAÇÃO_**: A configuração realizada no _Render_ utiliza planos gratuítos e é possível que ao acessar os endereços acima não estejam disponíveis na hora, contudo o próprio _Render_ identifica a tentativa de acesso e sobe os serviços automaticamente uns minutos depois.
-
-
 ## Como rodar o projeto localmente
 
 - Supondo que tenha git e Docker Compose instalados:
