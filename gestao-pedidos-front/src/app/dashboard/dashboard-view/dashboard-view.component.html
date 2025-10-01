@@ -2,7 +2,7 @@
   <mat-card-header class="dashboard-header">
     <mat-card-title class="card-title">📊 Dashboard</mat-card-title>
     <mat-card-subtitle class="dashboard-subtitle">
-      Pedidos realizados nos últimos
+      Orders placed in the last
       <mat-form-field appearance="outline" class="periodo-select">
         <mat-select [formControl]="periodoControl">
           <mat-option *ngFor="let dias of periodoOpcoes" [value]="dias">
@@ -10,7 +10,7 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-      dias
+      days
     </mat-card-subtitle>
   </mat-card-header>
 
@@ -24,17 +24,17 @@
 
             <div *ngIf="pedidos.length === 0" class="empty-message">
               <mat-icon>info</mat-icon>
-              <span>Nenhum pedido encontrado no período selecionado.</span>
+              <span>No orders found in the selected period.</span>
             </div>
 
             <mat-accordion *ngIf="pedidos.length > 0">
               <mat-expansion-panel *ngFor="let pedido of pedidos" class="pedido-panel mat-elevation-z2">
                 <mat-expansion-panel-header>
                   <mat-panel-title>
-                    <strong>Pedido #{{ pedido.id }}</strong>
+                    <strong>Order #{{ pedido.id }}</strong>
                   </mat-panel-title>
                   <mat-panel-description>
-                    <span><span class="desktop-label">Data do pedido:</span> {{ pedido.dataPedido | date:'dd/MM/yyyy HH:mm' }}</span>
+                    <span><span class="desktop-label">Order date:</span> {{ pedido.dataPedido | date:'dd/MM/yyyy HH:mm' }}</span>
                     <span><span class="desktop-label">Total:</span> {{ pedido.precoTotal | currency:'BRL' }}</span>
                   </mat-panel-description>
                 </mat-expansion-panel-header>
@@ -43,8 +43,8 @@
                   <mat-list-item *ngFor="let item of pedido.itensDoPedido" role="listitem" class="pedido-item">
                     <span matListItemTitle>{{ item.nomeProduto }}</span>
                     <span matListItemLine>
-                      <span class="desktop-label">Qtd:</span>{{ item.quantidade }} |
-                      <span class="desktop-label">Preço unit.:</span>{{ item.precoProduto | currency:'BRL' }}
+                      <span class="desktop-label">Qty:</span>{{ item.quantidade }} |
+                      <span class="desktop-label">Unit price:</span>{{ item.precoProduto | currency:'BRL' }}
                     </span>
                   </mat-list-item>
                 </mat-list>
@@ -62,7 +62,7 @@
 
             <div *ngIf="chartData.length === 0" class="empty-message">
               <mat-icon>info</mat-icon>
-              <span>Nenhum pedido encontrado no período selecionado.</span>
+              <span>No orders found in the selected period.</span>
             </div>
 
             <div *ngIf="chartData.length > 0" class="chart-container mat-elevation-z2">

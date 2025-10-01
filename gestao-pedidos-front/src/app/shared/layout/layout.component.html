@@ -13,15 +13,15 @@
       </a>
       <a mat-list-item routerLink="/produto" routerLinkActive="active-link" (click)="closeSidenavOnMobile()">
         <mat-icon matListItemIcon>inventory_2</mat-icon>
-        <span>Produtos</span>
+        <span>Product</span>
       </a>
       <a mat-list-item routerLink="/pedido/novo" routerLinkActive="active-link" (click)="closeSidenavOnMobile()">
         <mat-icon matListItemIcon>shopping_cart</mat-icon>
-        <span>Novo pedido</span>
+        <span>New order</span>
       </a>
       <a mat-list-item routerLink="/pedido/relatorio" routerLinkActive="active-link" (click)="closeSidenavOnMobile()">
         <mat-icon matListItemIcon>bar_chart</mat-icon>
-        <span>Relatórios</span>
+        <span>Reports</span>
       </a>
     </mat-nav-list>
   </mat-sidenav>
@@ -36,7 +36,7 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>Gestão de Pedidos</span>
+      <span>Order Management</span>
     </mat-toolbar>
 
     <main class="main-content">
