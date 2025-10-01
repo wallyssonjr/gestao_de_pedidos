@@ -6,8 +6,6 @@ Responsável por ler as configurações _.properties_ de acordo com o profile qu
 
 - Projeto simples que é pré-requisito para subir o projeto backend
 - Este projeto lê as configurações a partir de um repositório git separado. Separar os repositórios aumenta a segurança além da separação de responsabilidades
-- Endereço git do repositórico com as configurações: [GitLab configurações](https://gitlab.com/gestao-pedidos/gestao-de-pedidos-config.git)
-
 
 ## Como rodar apenas o projeto config-server sem docker
 - Se quiser subir o projeto config-server de forma manual sem ser pelo docker siga os passos abaixo (se quiser rodar o projeto pelo docker leia o **README.md** da raiz da pasta **/gestao-de-pedidos** ):
