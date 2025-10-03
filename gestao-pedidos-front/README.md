@@ -1,37 +1,44 @@
-# Gestao de pedidos Front
-Projeto responsável pelas telas e usabilidade do sistema.
+# Order Management Frontend
+- Project responsible for the system’s screens and usability.
 
 
-## Decisões técnicas
+## Technical Decisions
 
-- Utilização do Angular Material, apesar de ter sido o solicitado pelo desafio, é vantajoso por ser a biblioteca oficial de componentes do google bem como garante uma consistência visual e vários componentes já prontos
+- Use of Angular Material: Although it was requested in the challenge, it is advantageous as it is Google’s official component library, ensuring visual consistency and providing many ready-to-use components.
 
-- Modularização dos componentes ajuda na separação lógica dos componentes da tela e também isola o código que é carregado sob demanda
+- Component Modularization: Helps in logically separating screen components and isolates code that is loaded on demand.
 
-- Modularizado também o componente de mensagens para ser utilizado no sistema. Ajuda a padronizar as mensagens do sistema com fácil mudança se necessário
+- Messages Component Modularization: This component is modularized for system-wide use, helping standardize messages and making changes easier if needed.
 
-- Modularizado o componente loading e criado um interceptor de requests específico para ele
+- Loading Component Modularization: A request-specific interceptor was created for it.
 
-- Criação do módulo *shared* ajuda a centralizar componentes que serão reutilizados nos módulos do sistema, além de evitar imports repetitivos
+- Creation of a shared module: Centralizes components that will be reused across system modules and avoids repetitive imports.
 
-- Criação do módulo *core* é responsável por serviços e interceptadores que serão utilizados por todo o sistema e que são únicos. Além de centralizar esses comportamentos evita problemas de dependencia ciclica
+- Creation of a core module: Responsible for services and interceptors used throughout the system and that are unique. Centralizing these behaviors also prevents cyclic dependency issues.
 
-- Gerenciamento de estado para o módulo de produto. Isso evita que cada componente tenha que buscar as mudanças nos produtos e centraliza a responsabilidade de modo que qualquer alteração que haja será transparente para o sistema, além da performance de chamadas desnecessárias à API
+- State Management for the Product Module: Avoids each component having to fetch product changes individually and centralizes responsibility, ensuring any changes are transparent to the system, while improving API call performance.
 
-- Interceptadores http para os requests e responses. No caso do request simulei o envio automático de um token para qualquer chamada à API e o response o tratamento padronizado de erros retornados pelas APIs
-  - O interceptor de request loading foi separado e não junto ao interceptor auth afim de criar responsabilidades únicas facilitando manutenção e reutilização
+- HTTP Interceptors for Requests and Responses:
 
-- Os formulários são reativos com os componentes do Angula Material que facilita a validação de componentes
+- The request interceptor automatically simulates sending a token with every API call.
 
-- Utilizado scss com @media desta forma as telas são responsivas para desktop e mobile
+- The response interceptor standardizes error handling for API responses.
 
-## Como rodar apenas o projeto frontend sem docker
+- The loading request interceptor is separate from the auth interceptor to maintain single responsibilities, making maintenance and reuse easier.
 
-- Se quiser subir o projeto frontend de forma manual sem ser pelo docker siga os passos abaixo (se quiser rodar o projeto pelo docker leia o *README.md* da raiz da pasta */gestao-de-pedidos* ):
+- Reactive Forms: Forms are reactive and use Angular Material components, which simplifies component validation.
 
-- Supondo que tenha Node.js e Git instalados
+- SCSS with @media: Ensures responsive design for both desktop and mobile screens.
 
-- Abrir um terminal e executar os comandos:
+## How to Run the Frontend Project Without Docker
+
+- How to Run the Frontend Project Without Docker
+
+- If you want to run the frontend manually without Docker, follow the steps below (to run via Docker, see the README.md in the root folder /gestao-de-pedidos):
+
+- Assuming Node.js and Git are installed:
+
+- Open a terminal and run:
 ```
 git init .
 ```
@@ -41,18 +48,18 @@ git clone -b main git@github.com:wallyssonjr/gestao_de_pedidos.git
 ```
 cd gestao-de-pedidos\gestao-pedidos-front
 ```
-caso não tenha instalado angular.v19.2.15+ na máquina faça o comando:
+If Angular CLI v19.2.15+ is not installed on your machine, run:
 ```
 npm install -g @angular/cli@19.2.15
 ```
-na raiz da pasta *gestao-de-pedidos\gestao-pedidos-front* rode o comando:
+In the root of gestao-de-pedidos\gestao-pedidos-front, run:
 ```
 npm install
 ```
-após finalizar rode o comando:
+After installation, run:
 ```
 ng serve --port 80
 ```
 - Acessar no browser a [Página do sistema](http://localhost)
 
-- Observação: é necessário o backend estar rodando antes para o funcionamento correto do frontend
+- Note: The backend must be running for the frontend to function correctly.
