@@ -29,7 +29,7 @@ export class RelatorioPedidosComponent {
 
   gerarRelatorio(tipo: 'simples' | 'agrupado'): void {
     if (this.form.invalid) {
-      this.notificacaoService.msgAlerta('Por favor, selecione um intervalo de datas válido.');
+      this.notificacaoService.msgAlerta('Please select a valid date range.');
       return;
     }
 
@@ -45,7 +45,7 @@ export class RelatorioPedidosComponent {
       const url = window.URL.createObjectURL(resposta);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `relatorio_pedidos_${tipo}_${dataInicialFormatada}_a_${dataFinalFormatada}.pdf`;
+      a.download = `report_orders_${tipo}_${dataInicialFormatada}_a_${dataFinalFormatada}.pdf`;
       document.body.appendChild(a);
       a.click();
       window.URL.revokeObjectURL(url);

@@ -74,12 +74,12 @@ export class CadastroPedidoComponent implements OnInit {
     const quantidade = this.formBuscaProduto.get('quantidade')?.value;
 
     if (!produtoSelecionado || !produtoSelecionado.id) {
-      this.notificacaoService.msgAlerta('Selecione um produto.');
+      this.notificacaoService.msgAlerta('Select a product.');
       return;
     }
 
     if (quantidade > produtoSelecionado.quantidade) {
-      this.notificacaoService.msgAlerta(`Estoque insuficiente. Disponível: ${produtoSelecionado.quantidade}`);
+      this.notificacaoService.msgAlerta(`Insufficient stock. Available: ${produtoSelecionado.quantidade}`);
       return;
     }
 
@@ -117,7 +117,7 @@ export class CadastroPedidoComponent implements OnInit {
 
   realizarPedido(): void {
     if (this.itensCarrinho.length === 0) {
-      this.notificacaoService.msgAlerta('Adicione pelo menos um produto ao pedido.');
+      this.notificacaoService.msgAlerta('Add at least one product to the order.');
       return;
     }
 
@@ -129,7 +129,7 @@ export class CadastroPedidoComponent implements OnInit {
     const pedidoDTO: SalvarPedidoDTO = {itensDoPedido};
 
     this.pedidoService.salvar(pedidoDTO).subscribe((resposta) => {
-      this.notificacaoService.msgSucesso(`Pedido #${resposta.id} feito com sucesso!`)
+      this.notificacaoService.msgSucesso(`Order #${resposta.id} done successfully!`)
       this.router.navigate(['/dashboard']);
     });
   }
