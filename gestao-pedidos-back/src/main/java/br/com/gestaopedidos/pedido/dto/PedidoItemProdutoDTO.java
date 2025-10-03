@@ -23,10 +23,10 @@ public class PedidoItemProdutoDTO {
     private BigDecimal valorTotal;
 
     /**
-     * Método utilizado para calcular os totais de valor e quantidade dos produtos em todas as vendas
+     * Method used to calculate the total value and quantity of products across all sales
      *
-     * @param itensPorProduto Map<Produto, List<PedidoItem>> Para a chave produto possui a lista de todos os pedidos que está incluso
-     * @return List<PedidoItemProdutoDTO> com todos os totais calculados
+     * @param itemsPerProduct Map<Product, List<OrderItem>> For the product key, contains the list of all orders included in it.
+     * @return List<OrderItemProductDTO> with all calculated totals.
      */
     @JsonIgnore
     public static List<PedidoItemProdutoDTO> calcularTotaisItensProduto(Map<Produto, List<PedidoItem>> itensPorProduto) {

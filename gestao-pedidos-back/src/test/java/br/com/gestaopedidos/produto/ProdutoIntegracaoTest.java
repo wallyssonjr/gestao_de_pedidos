@@ -102,7 +102,7 @@ public class ProdutoIntegracaoTest {
         return Produto.builder()
                 .nome("Monster")
                 .preco(new BigDecimal("11.90"))
-                .descricao("Energético")
+                .descricao("Energetic")
                 .quantidade(50)
                 .build();
     }
@@ -111,7 +111,7 @@ public class ProdutoIntegracaoTest {
         return ProdutoDTO.builder()
                 .nome("Monster")
                 .preco(new BigDecimal("11.90"))
-                .descricao("Energético")
+                .descricao("Energetic")
                 .quantidade(50)
                 .build();
     }

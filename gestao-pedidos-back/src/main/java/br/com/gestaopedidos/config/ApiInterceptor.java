@@ -38,26 +38,26 @@ public class ApiInterceptor {
         Collections.list(request.getHeaderNames())
                 .forEach(headerName -> headers.put(headerName, request.getHeader(headerName)));
 
-        log.info("==================== INÍCIO DA REQUISIÇÃO ====================");
+        log.info("==================== START OF REQUEST ====================");
         log.info("Endpoint: {} {}", request.getMethod(), request.getRequestURI());
         log.info("Headers: {}", jsonUtil.objetosArrayParaJsonString(headers));
-        log.info("Método: {}.{}", joinPoint.getSignature().getDeclaringTypeName(), joinPoint.getSignature().getName());
-        log.info("Argumentos: {}", jsonUtil.objetosArrayParaJsonString(joinPoint.getArgs()));
+        log.info("Method: {}.{}", joinPoint.getSignature().getDeclaringTypeName(), joinPoint.getSignature().getName());
+        log.info("Arguments: {}", jsonUtil.objetosArrayParaJsonString(joinPoint.getArgs()));
 
         Object response;
         try {
             response = joinPoint.proceed();
         } catch (Throwable throwable) {
-            log.info("==================== FIM DA REQUISIÇÃO COM ERRO ====================");
+            log.info("==================== END OF REQUEST WITH ERROR ====================");
             throw throwable;
         }
 
         long endTime = System.currentTimeMillis();
         long totalExecutionTime = endTime - startTime;
 
-        log.info("Resposta: {}", jsonUtil.objetoParaJsonString(response));
-        log.info("Tempo de execução: {} ms", totalExecutionTime);
-        log.info("==================== FIM DA REQUISIÇÃO ====================");
+        log.info("Response: {}", jsonUtil.objetoParaJsonString(response));
+        log.info("Runtime: {} ms", totalExecutionTime);
+        log.info("==================== END OF REQUEST ====================");
 
         return response;
     }

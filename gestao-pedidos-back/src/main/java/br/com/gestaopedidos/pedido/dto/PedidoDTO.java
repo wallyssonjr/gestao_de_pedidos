@@ -22,13 +22,13 @@ public class PedidoDTO {
     @Schema(accessMode = Schema.AccessMode.READ_ONLY)
     private Long id;
 
-    @Schema(description = "Data hora do pedido.", accessMode = Schema.AccessMode.READ_ONLY)
+    @Schema(description = "Date time of order", accessMode = Schema.AccessMode.READ_ONLY)
     private LocalDateTime dataPedido;
 
     @NotEmpty(message = "pedido.validacao.1")
     private List<PedidoItemDTO> itensDoPedido;
 
-    @Schema(description = "Valor total deste pedido", accessMode = Schema.AccessMode.READ_ONLY)
+    @Schema(description = "Total value of this order", accessMode = Schema.AccessMode.READ_ONLY)
     private BigDecimal precoTotal;
 
     public BigDecimal getPrecoTotal() {

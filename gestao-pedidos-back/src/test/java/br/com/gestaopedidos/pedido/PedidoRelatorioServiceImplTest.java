@@ -68,8 +68,8 @@ public class PedidoRelatorioServiceImplTest {
 
     @Test
     void gerarRelatorioPedidosSucessoTest() throws JRException, IOException {
-        final byte[] pdf = "Conteudo PDF qualquer".getBytes();
-        final String nomeRelatorio = "relatorio_pedidos_" + dataInicial + "_a_" + dataFinal + ".pdf";
+        final byte[] pdf = "Any PDF content".getBytes();
+        final String nomeRelatorio = "report_orders_" + dataInicial + "_a_" + dataFinal + ".pdf";
 
         try (MockedStatic<RelatorioFactory> relatorioFactoryMock = Mockito.mockStatic(RelatorioFactory.class)) {
             relatorioFactoryMock.when(RelatorioFactory::getRelatorioPDFService).thenReturn(relatorioPDFService);
@@ -92,7 +92,7 @@ public class PedidoRelatorioServiceImplTest {
     @SneakyThrows
     void buscarPedidosSemDadosNoPeriodoSucessoTest() {
         when(pedidoRepo.findByDataPedidoBetween(any(), any())).thenReturn(Collections.emptyList());
-        when(mensagemService.getMensagem("pedido.relatorio.erro.2")).thenReturn("Nenhum pedido encontrado para o período passado.");
+        when(mensagemService.getMensagem("pedido.relatorio.erro.2")).thenReturn("No orders found for the past period.");
 
         assertThrows(RecursoNaoEncontradoException.class, () -> {
             pedidoRelatorioService.gerarRelatorioPedidos(dataInicial, dataFinal);
@@ -112,8 +112,8 @@ public class PedidoRelatorioServiceImplTest {
 
     @Test
     void gerarRelatorioAgrupadoPorProdutoSucessoTest() throws JRException, IOException {
-        byte[] pdf = "Conteudo PDF qualquer".getBytes();
-        final String nomeRelatorio = "relatorio_pedidos_produtos_agrupado_" + dataInicial + "_a_" + dataFinal + ".pdf";
+        byte[] pdf = "Any PDF content".getBytes();
+        final String nomeRelatorio = "grouped_product_orders_report_" + dataInicial + "_a_" + dataFinal + ".pdf";
 
         try (MockedStatic<RelatorioFactory> relatorioFactoryMock = Mockito.mockStatic(RelatorioFactory.class)) {
             relatorioFactoryMock.when(RelatorioFactory::getRelatorioPDFService).thenReturn(relatorioPDFService);

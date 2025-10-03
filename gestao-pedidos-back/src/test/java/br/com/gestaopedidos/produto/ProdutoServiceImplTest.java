@@ -46,7 +46,7 @@ public class ProdutoServiceImplTest {
         produtoDTO = new ProdutoDTO();
         produtoDTO.setId(1L);
         produtoDTO.setNome("Monster");
-        produtoDTO.setDescricao("Bebida energético");
+        produtoDTO.setDescricao("Energy drink");
         produtoDTO.setPreco(new BigDecimal("11.90"));
         produtoDTO.setQuantidade(10);
     }
@@ -55,7 +55,7 @@ public class ProdutoServiceImplTest {
         produto = new Produto();
         produto.setId(1L);
         produto.setNome("Monster");
-        produto.setDescricao("Bebida energético");
+        produto.setDescricao("Energy drink");
         produto.setPreco(new BigDecimal("11.90"));
         produto.setQuantidade(10);
     }
@@ -89,7 +89,7 @@ public class ProdutoServiceImplTest {
         final long idProdutoInexistente = 20L;
 
         when(produtoRepo.findById(idProdutoInexistente)).thenReturn(Optional.empty());
-        when(mensagemService.getMensagem("geral.erro.1")).thenReturn("Recurso não encontrado.");
+        when(mensagemService.getMensagem("geral.erro.1")).thenReturn("Resource not found.");
 
         assertThrows(RecursoNaoEncontradoException.class, () -> {
             produtoService.buscarPorId(idProdutoInexistente);
@@ -99,7 +99,7 @@ public class ProdutoServiceImplTest {
 
     @Test
     void buscarProdutoPorIdDTOValidacaoTest() {
-        when(mensagemService.getMensagem("produto.erro.3")).thenReturn("ID de produto inválido.");
+        when(mensagemService.getMensagem("produto.erro.3")).thenReturn("Invalid product ID.");
 
         assertThrows(NegocioException.class, () -> {
             produtoService.buscarPorId(0L);
@@ -155,7 +155,7 @@ public class ProdutoServiceImplTest {
         final long idProdutoInexistente = 20L;
 
         when(produtoRepo.existsById(idProdutoInexistente)).thenReturn(false);
-        when(mensagemService.getMensagem("geral.erro.1")).thenReturn("Recurso não encontrado.");
+        when(mensagemService.getMensagem("geral.erro.1")).thenReturn("Resource not found.");
 
         assertThrows(RecursoNaoEncontradoException.class, () -> {
             produtoService.remover(idProdutoInexistente);
@@ -166,7 +166,7 @@ public class ProdutoServiceImplTest {
 
     @Test
     void removerProdutoPorIdValidacaoTest() {
-        when(mensagemService.getMensagem("produto.erro.3")).thenReturn("ID de produto inválido.");
+        when(mensagemService.getMensagem("produto.erro.3")).thenReturn("Invalid product ID.");
 
         assertThrows(NegocioException.class, () -> {
             produtoService.buscarPorId(0L);
@@ -179,7 +179,7 @@ public class ProdutoServiceImplTest {
         produtoDTO.setId(null);
         produtoDTO.setQuantidade(0);
 
-        when(mensagemService.getMensagem("produto.validacao.quantidadePositiva")).thenReturn("Quantidade no estoque deve ser maior que zero");
+        when(mensagemService.getMensagem("produto.validacao.quantidadePositiva")).thenReturn("Quantity in stock must be greater than zero");
 
         assertThrows(NegocioException.class, () -> {
             produtoService.salvar(produtoDTO);

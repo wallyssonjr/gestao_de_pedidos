@@ -14,7 +14,7 @@ public class ErrorListener {
     @RabbitListener(queues = RabbitMQErrorConfig.QUEUE_NAME)
     public void onError(String errorMessage) {
         log.error("=================================================");
-        log.error("ERRO RECEBIDO DA FILA RABBITMQ:");
+        log.error("ERROR RECEIVED FROM RABBITMQ QUEUE:");
         log.error(errorMessage);
         log.error("=================================================");
     }

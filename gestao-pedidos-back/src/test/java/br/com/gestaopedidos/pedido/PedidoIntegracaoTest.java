@@ -183,7 +183,7 @@ public class PedidoIntegracaoTest {
         return ProdutoDTO.builder()
                 .nome("Monster")
                 .preco(new BigDecimal("10"))
-                .descricao("Energético")
+                .descricao("Energetic")
                 .quantidade(10)
                 .build();
     }

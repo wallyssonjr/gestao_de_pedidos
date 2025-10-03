@@ -23,7 +23,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/pedido")
 @RequiredArgsConstructor
-@Tag(name = "Pedido", description = "Serviços disponíveis para a tabela de Pedido e PedidoItem.")
+@Tag(name = "Pedido", description = "Services available for the Order and OrderItem table.")
 public class PedidoController {
 
     private final PedidoService pedidoService;
@@ -31,25 +31,25 @@ public class PedidoController {
     private final MensagemService mensagemService;
 
     @GetMapping("/listar-todos")
-    @Operation(summary = "Lista todos os pedidos.", description = "Lista todos os pedidos do sistema sem filtros.")
+    @Operation(summary = "List all orders.", description = "Lists all system orders without filters.")
     public ResponseEntity<List<PedidoDTO>> listarTodosPedidos() {
         return ResponseEntity.ok(pedidoService.listarTodos());
     }
 
     @GetMapping("/{id}")
-    @Operation(summary = "Busca pedido por id.", description = "Retorna os dados do pedido buscando pelo id")
+    @Operation(summary = "Search order by id.", description = "Retorna os dados do pedido buscando pelo id")
     public ResponseEntity<PedidoDTO> buscarPorIdPedido(@PathVariable Long id) {
         return ResponseEntity.ok(pedidoService.buscarPorId(id));
     }
 
     @PostMapping("/salvar")
-    @Operation(summary = "Salvar produto.", description = "Realiza um novo pedido.")
+    @Operation(summary = "Save product.", description = "Place a new order.")
     public ResponseEntity<PedidoDTO> salvar(@RequestBody @Valid PedidoDTO pedidoDTO) {
         return ResponseEntity.ok(pedidoService.salvar(pedidoDTO));
     }
 
     @GetMapping("/pedidos-relatorio-pdf")
-    @Operation(summary = "Relatório PDF de pedidos.", description = "Retorna um relatório PDF de pedidos filtrados por período.")
+    @Operation(summary = "PDF order report.", description = "Returns a PDF report of orders filtered by period.")
     public ResponseEntity<byte[]> gerarRelatorioPedidoPDF(@RequestParam LocalDate dataInicial, LocalDate dataFinal) {
         try {
             RelatorioDTO relatorioPDF = pedidoRelatorioService.gerarRelatorioPedidos(dataInicial, dataFinal);
@@ -57,12 +57,12 @@ public class PedidoController {
             return ResponseEntity.ok().headers(relatorioPDF.getHttpHeader()).body(relatorioPDF.getRelatorioPDF());
         } catch (JRException | IOException e) {
             log.error(mensagemService.getMensagem("pedido.relatorio.erro.1", ExceptionUtils.getStackTrace(e)), e);
-            throw new GlobalException("Erro ao gerar o relatório", e);
+            throw new GlobalException("Error generating report", e);
         }
     }
 
     @GetMapping("/pedidos-produto-relatorio-pdf")
-    @Operation(summary = "Relatório PDF de pedidos agrupados por produto.", description = "Relatório PDF de pedidos agrupados e sumarizados por produto filtrados por período.")
+    @Operation(summary = "PDF report of orders grouped by product.", description = "PDF report of orders grouped and summarized by product filtered by period.")
     public ResponseEntity<byte[]> gerarRelatorioPedidosProdutoAgrupadoPDF(@RequestParam LocalDate dataInicial, LocalDate dataFinal) {
         try {
             RelatorioDTO relatorioPDF = pedidoRelatorioService.gerarRelatorioPedidosAgrupadoPorProduto(dataInicial, dataFinal);
@@ -70,18 +70,18 @@ public class PedidoController {
             return ResponseEntity.ok().headers(relatorioPDF.getHttpHeader()).body(relatorioPDF.getRelatorioPDF());
         } catch (JRException | IOException e) {
             log.error(mensagemService.getMensagem("pedido.relatorio.erro.1", ExceptionUtils.getStackTrace(e)), e);
-            throw new GlobalException("Erro ao gerar o relatório", e);
+            throw new GlobalException("Error generating report", e);
         }
     }
 
     @GetMapping("/ultimos-x-dias")
-    @Operation(summary = "Lista os pedidos por filtro de dias.", description = "Lista os pedidos realizados nos últimos X dias, onde X é o parâmetro passado.")
+    @Operation(summary = "List orders by day filter.", description = "Lists the orders placed in the last X days, where X is the parameter passed.")
     public ResponseEntity<List<PedidoDTO>> listarUltimosXDias(@RequestParam(defaultValue = "7", required = false) Integer dias) {
         return ResponseEntity.ok(pedidoService.listarUltimosXDias(dias));
     }
 
     @GetMapping("/pedidos-agrupado-produto")
-    @Operation(summary = "Lista os pedidos agrupados por produto com filtro de dias.", description = "Lista os pedidos agrupados e sumarizados por produto realizados nos últimos X dias, onde X é o parâmetro passado.")
+    @Operation(summary = "Lists orders grouped by product with a day filter.", description = "Lists orders grouped and summarized by product made in the last X days, where X is the parameter passed.")
     public ResponseEntity<List<PedidoItemProdutoDTO>> listarPedidosAgrupadoProduto(@RequestParam(defaultValue = "7", required = false) Integer dias) {
         return ResponseEntity.ok(pedidoService.pedidosAgrupadoProduto(dias));
     }

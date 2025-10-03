@@ -62,7 +62,7 @@ public class PedidoServiceImplTest {
         produto = Produto.builder()
                 .id(1L)
                 .nome("Monster")
-                .descricao("Energético")
+                .descricao("Energetic")
                 .preco(new BigDecimal("10"))
                 .quantidade(20)
                 .build();
@@ -70,7 +70,7 @@ public class PedidoServiceImplTest {
         produtoDTO = ProdutoDTO.builder()
                 .id(1L)
                 .nome("Monster")
-                .descricao("Energético")
+                .descricao("Energetic")
                 .preco(new BigDecimal("10"))
                 .quantidade(20)
                 .build();
@@ -110,7 +110,7 @@ public class PedidoServiceImplTest {
         final long idPedidoInexistente = 20L;
 
         when(pedidoRepo.findById(idPedidoInexistente)).thenReturn(Optional.empty());
-        when(mensagemService.getMensagem("geral.erro.1")).thenReturn("Recurso não encontrado.");
+        when(mensagemService.getMensagem("geral.erro.1")).thenReturn("Resource not found.");
 
         assertThrows(RecursoNaoEncontradoException.class, () -> {
             pedidoService.buscarPorId(idPedidoInexistente);
@@ -120,7 +120,7 @@ public class PedidoServiceImplTest {
 
     @Test
     void buscarProdutoPorIdDTOValidacaoTest() {
-        when(mensagemService.getMensagem("pedido.erro.1")).thenReturn("Id do pedido inválido.");
+        when(mensagemService.getMensagem("pedido.erro.1")).thenReturn("Invalid order ID.");
 
         assertThrows(NegocioException.class, () -> {
             pedidoService.buscarPorId(0L);

@@ -23,7 +23,7 @@ public class ErrorEventPublisher {
                     errorMessage
             );
         } catch (Exception e) {
-            log.warn("Tentativa de publicar no rabbitmq um erro, mas falou. Fluxo segue sem interrupções: {}", e.getMessage());
+            log.warn("Attempting to publish to rabbitmq caused an error, but failed. The stream continues uninterrupted: {}", e.getMessage());
         }
     }
 }
