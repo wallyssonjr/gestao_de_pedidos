@@ -52,6 +52,9 @@ mvn clean install
 java -jar target\gestao-pedidos-back-0.0.1.jar --spring.profiles.active=dev
 ```
 - Access in your browser: [Swagger local](http://localhost:8080/gestao-pedidos/api/swagger-ui/index.html)
+- Access in the browser: [Swagger Render](https://gestao-de-pedidos-2.onrender.com/gestao-pedidos/api/swagger-ui/index.html)
+  - **_NOTE_**: The configuration on Render uses free plans, so it is possible that the above address may not be available immediately. However, Render itself detects access attempts and starts the services automatically a few minutes later.
+
 - Note: Running manually requires the config-server to be running first. To use RabbitMQ this way, it must be installed and configured locally or via a minimal Docker setup.
 
 ## How to Run Tests
