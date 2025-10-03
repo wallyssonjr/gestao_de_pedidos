@@ -1,24 +1,24 @@
-# Gestão de pedidos
-Este projeto compõe de três módulos: **_gestao-de-pedidos-back_**, **_gestao-de-pedidos-front_** e **_config-server_** onde: 
-- **_gestao-de-pedidos-back_**: responsável pela publicação das APIs e regras de negócio
-- **_gestao-de-pedidos-front_**: responsável pelas telas e usabilidade do sistema
-- **_config-server_**: responsável por ler as configurações _.properties_ de acordo com o profile que o projeto estiver subindo via spring cloud
+# Order Management
+
+- This project consists of three modules: gestao-de-pedidos-back, gestao-de-pedidos-front, and config-server, where:
+- gestao-de-pedidos-back: responsible for publishing APIs and implementing business rules
+- gestao-de-pedidos-front: responsible for the system screens and usability
+- config-server: responsible for reading .properties configurations according to the profile the project is running with via Spring Cloud
+
+## Technical Decisions
+
+- All mandatory and bonus requirements of this test have been fulfilled.
 
 
-## Decisões técnicas
-
-- Todos os requisitos obrigatório e bônus deste teste foram cumpridos.
-
-
-- Na raiz de cada projeto (**_config-server_** , **_gestao-de-pedidos-back_** e **_gestao-de-pedidos-front_**) há um **README.md** que contém a sessão **Decisões técnicas** com as explicações para cada.
+- At the root of each project (config-server, gestao-de-pedidos-back, and gestao-de-pedidos-front), there is a README.md containing the Technical Decisions section with explanations for each:
 	- [README.md do backend](https://github.com/wallyssonjr/gestao_de_pedidos/tree/main/gestao-pedidos-back)
 	- [README.md do frontend](https://github.com/wallyssonjr/gestao_de_pedidos/tree/main/gestao-pedidos-front)
 	- [README.md do config-server](https://github.com/wallyssonjr/gestao_de_pedidos/blob/main/config-server/README.md)
 
-## Como rodar o projeto localmente
+## How to Run the Project Locally
 
-- Supondo que tenha git e Docker Compose instalados:
-- Abrir um terminal e executar os comandos:
+- Assuming Git and Docker Compose are installed:
+- Open a terminal and run the commands:
 ```
 git init .
 ```
@@ -31,19 +31,19 @@ cd gestao-de-pedidos
 ```
 docker-compose up --build
 ```
-- As configurações identificarão que está rodando localmente e subirá instâncias dos 3 projetos utilizando profile **dev** e após finalizar todo o processo pode acessar no browser:
+- The configuration will detect that it is running locally and start instances of the three projects using the dev profile. Once the process finishes, you can access in your browser:
 - [Swagger](http://localhost:8080/gestao-pedidos/api/swagger-ui/index.html)
 - [Página do sistema](http://localhost)
 
 
-## Como rodar os testes manualmente
+## How to Run Tests Manually
 
-- Supondo que tenha Java17+ e Maven instalados
-- Abrir um terminal e abrir o diretório **_gestao-de-pedidos\gestao-pedidos-back_**
+- Assuming Java 17+ and Maven are installed
+- Open a terminal and navigate to the gestao-de-pedidos\gestao-pedidos-back directory:
 ```
 cd gestao-de-pedidos\gestao-pedidos-back
 ```
-e rodar o comando:
+Run the command:
 ```
 mvn test
 ```

@@ -1,16 +1,15 @@
 # Config server
-Responsável por ler as configurações _.properties_ de acordo com o profile que o projeto estiver subindo via spring cloud
+Responsible for reading .properties configurations according to the profile the project is running with via Spring Cloud.
 
+## Technical Decisions
 
-## Decisões técnicas
-
-- Projeto simples que é pré-requisito para subir o projeto backend
-- Este projeto lê as configurações a partir de um repositório git separado. Separar os repositórios aumenta a segurança além da separação de responsabilidades
-
-## Como rodar apenas o projeto config-server sem docker
-- Se quiser subir o projeto config-server de forma manual sem ser pelo docker siga os passos abaixo (se quiser rodar o projeto pelo docker leia o **README.md** da raiz da pasta **/gestao-de-pedidos** ):
-- Supondo que tenha Java17+, Maven e Git instalados
-- Abrir um terminal e executar os comandos:
+- Simple project that is a prerequisite for running the backend project.
+- This project reads configurations from a separate Git repository. Separating repositories increases security and enforces separation of responsibilities.
+- 
+## How to Run the Config-Server Project Without Docker
+- If you want to run the config-server manually without Docker, follow these steps (for running via Docker, see the README.md at the root of /gestao-de-pedidos):
+- Assuming Java 17+, Maven, and Git are installed.
+- Open a terminal and run the commands:
 ```
 git init .
 ```
@@ -26,4 +25,4 @@ mvn clean install
 ```
 java -jar target\config-server-0.0.1.jar
 ```
-- **_OBSERVAÇÃO_**: Este projeto é pré-requisito para o rodar o backend 
+- Note: This project is a prerequisite for running the backend.
